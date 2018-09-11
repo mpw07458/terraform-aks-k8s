@@ -49,7 +49,7 @@ Releasing state lock. This may take a few moments...
 Acquiring state lock. This may take a few moments...
 azurerm_resource_group.k8s: Creating...
   location: "" => "eastus"
-  name:     "" => "nic-k8s-vault"
+  name:     "" => "tfsstate"
   tags.%:   "" => "<computed>"
 
   #...
@@ -57,7 +57,7 @@ azurerm_resource_group.k8s: Creating...
 azurerm_kubernetes_cluster.k8s: Still creating... (12m50s elapsed)
 azurerm_kubernetes_cluster.k8s: Still creating... (13m0s elapsed)
 azurerm_kubernetes_cluster.k8s: Still creating... (13m10s elapsed)
-azurerm_kubernetes_cluster.k8s: Creation complete after 13m10s (ID: /subscriptions/c0a607b2-6372-4ef3-abdb-...tainerService/managedClusters/k8svault)
+azurerm_kubernetes_cluster.k8s: Creation complete after 13m10s (ID: /subscriptions/c0a607b2-6372-4ef3-abdb-...tainerService/managedClusters/tfsstate)
 
 Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 Releasing state lock. This may take a few moments...
@@ -73,18 +73,24 @@ Outputs:
 $ echo "$(terraform output kube_config)" > ~/.kube/tfk8stest
 ```
 
+```bash
 $ export KUBECONFIG=~/.kube/tfk8stest
+```
 First, let's check the health of the cluster:
 
+```bash
 $ kubectl get nodes
-
+```
 You should see the details of your worker nodes, and they should all have a status Ready.
 
 
 5. use terminal on mac
-
+```bash
 $ az aks install-cli
-
+```
+```bash
 $ az aks get-credentials --resource-group tfs-rg --name tfk8stest
-
+```
+```bash
 $ az aks browse --resource-group tfs-rg --name tfk8stest
+```
