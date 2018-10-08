@@ -8,6 +8,11 @@ $ terraform init -backend-config="storage_account_name=<YourAzureStorageAccountN
 
 2. Create a plan
 
+``` Optional step
+export TF_VAR_client_id=<your-client-id>
+export TF_VAR_client_secret=<your-client-secret>
+```
+
 ```bash
 $ terraform plan -out out.plan
 Acquiring state lock. This may take a few moments...
