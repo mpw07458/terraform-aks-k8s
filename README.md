@@ -1,9 +1,7 @@
 1. Init remote state
 
 ```bash
-$ terraform init \
-  -backend-config "storage_account_name=cloudshellstoragempw" \
-  -backend-config="container_name=mpwcontainer"
+$ terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate"
 ```
 
 2. Create a plan
